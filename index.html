@@ -1,0 +1,71 @@
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Test SambaTvApi</title>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+        <style>
+            .dl-horizontal > dl {
+                margin-top : 5px;
+            }       
+        </style>
+        <script type="text/javascript" src="/js/libs/jquery/jquery-1.8.js"></script>
+        <script type="text/javascript">
+
+            window.onload = function () {
+                var api = window.SambaTV || window.SambaTvAPI,
+                    extensionName = "Not Available";
+
+                if (window.SambaTvAPI !== undefined) {
+                    extensionName = "SambaTvAPI";
+                } else if (window.SambaTV) {
+                    extensionName = "SambaTV";
+                }
+
+                $(".dl-horizontal > dd").html(extensionName);
+
+                if (api && api.hasOwnProperty("device")) {
+                    for (var i in api.device) {
+                        if (typeof(api.device[i]) === "function")
+                            continue;    
+
+                        $("tbody").append("<tr><td>"+i+"</td><td>"+api.device[i]+"</td></tr>");      
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Browser Integration Guide, Section 5.11 </h4>
+                </div>
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>JS Extension</dt>
+                        <dd>Not Available</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="page-header">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>property</th>
+                            <th>value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
+
