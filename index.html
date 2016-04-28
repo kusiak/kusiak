@@ -39,15 +39,17 @@
 
 
                 $(".dl-horizontal > dd").html(extensionName);
+                
+                var device = window.SambaTV.getDeviceInfo();
 
-                if (api && api.hasOwnProperty("device")) {
-                    for (var i in api.device) {
-                        if (typeof(api.device[i]) === "function")
-                            continue;    
 
-                        $("tbody").append("<tr><td>"+i+"</td><td>"+api.device[i]+"</td></tr>");      
-                    }
+                for (var i in device) {
+                    if (typeof(api.device[i]) === "function")
+                        continue;    
+
+                    $("tbody").append("<tr><td>"+i+"</td><td>"+api.device[i]+"</td></tr>");      
                 }
+
             }
         </script>
     </head>
